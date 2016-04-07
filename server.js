@@ -61,23 +61,28 @@ var route = function(body) {
 var parseNfcPost = function (request) {
     var nfcDb = parseDb(nfcDbHandle);
     var tagDb = parseDb(tagDbHandle);
+    var tag = getTag(tagDb, request.source);
+    var ticket = tag ? tag.ticket : '';
+
+
+    if (request.action === 'in') {
+        currentId = request.source;
+    } else {
+        currentId = null;
+    }
 
     nfcDb.push({
         source: request.source,
         action: request.action,
+        ticket: ticket,
         timestamp: new Date().toISOString(),
     });
 
-    if (request.action === 'in') {
-        currentId = request.source;
-    }
-
-    if (!getTag(tagDb, request.source)) {
+    if (!tag) {
         tagDb.push({
             id: request.source,
             ticket: '',
         });
-        console.log('pushing to tagDb');
     }
 
     fs.writeFile(nfcDbHandle, JSON.stringify(nfcDb, null, 4), function(err) {
@@ -109,7 +114,7 @@ var parseClaimPost = function (request) {
     var tagIndex = _.findIndex(tagDb, {id: currentId});
 
     if (tagIndex < 0) {
-        console.log('Claim before checking', request.ticket);
+        console.log('No ticket checked in:', request.ticket);
     } else {
         tagDb[tagIndex].ticket = request.ticket;
     }
