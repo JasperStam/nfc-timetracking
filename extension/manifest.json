@@ -1,0 +1,30 @@
+{
+  "name": "Modus Phabricator",
+  "version": "0.0.1",
+  "description": "A simple test for Modus in Phabricator",
+  "homepage_url": "https://github.com/SpaceK33z",
+  "manifest_version": 2,
+  "minimum_chrome_version": "49",
+  "permissions": [
+    "https://phabricator.codeyellow.nl/*",
+    "storage"
+  ],
+  "icons": {
+    "128": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "run_at": "document_start",
+      "matches": [
+        "https://phabricator.codeyellow.nl/T*"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "js": [
+        "vendor/sprint.min.js",
+        "content.js"
+      ]
+    }
+  ]
+}
