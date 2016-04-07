@@ -1,0 +1,17 @@
+{
+  "name": "nfc-timetracking",
+  "version": "0.0.1",
+  "author": "Jasper Stam <jasper@strnk.nl>",
+  "description": "",
+  "license": "MIT",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1"
+  },
+  "devDependencies": {
+    "nodemon": "1.9.1"
+  }
+}
