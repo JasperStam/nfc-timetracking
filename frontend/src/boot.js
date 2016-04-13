@@ -1,3 +1,9 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
 import App from 'container/App';
+import 'moment-duration-format';
 
-console.log('hiii8');
+ReactDOM.render(
+  <App />,
+  document.getElementById('app')
+);

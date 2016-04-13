@@ -1,0 +1,16 @@
+{
+    "extends": "codeyellow/react",
+    "root": true,
+    "parserOptions": {
+        "ecmaVersion": 7,
+        "ecmaFeatures": {
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "rules": {
+        "react/prefer-es6-class": [2, "never"]
+    },
+    "globals": {
+        "__DEV__": true
+    },
+}
