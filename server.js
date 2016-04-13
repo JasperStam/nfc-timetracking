@@ -7,8 +7,9 @@ var tagDbHandle = 'tags_db.json';
 var port = 3000;
 var host = '127.0.0.1';
 var currentId = '';
+var index = fs.readFileSync('index.html');
 
-var server = http.createServer( function(req, res) {
+var server = http.createServer(function(req, res) {
     if (req.method === 'POST') {
         var body = '';
         req.on('data', function (data) {

@@ -2,3 +2,6 @@ node_modules/
 nfc_db.json
 claim_db.json
 tags_db.json
+.env
+venv/
+__pycache__/
