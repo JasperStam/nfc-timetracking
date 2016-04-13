@@ -9,4 +9,5 @@ env.update(dotenv)
 # Now, parse and set the settings dict
 SETTINGS = {
     'DEBUG': env.get('MODUS_DEBUG', '').lower() == 'true',
+    'DATABASE': env.get('MODUS_SQLITE_FILE', '').lower() == 'true',
 }
