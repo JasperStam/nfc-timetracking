@@ -17,7 +17,7 @@ frontend: FORCE frontend-npm frontend-build
 
 #### Build: substeps
 backend-pip: FORCE
-	pip install -U -r packages.pip
+	pip install -U -r python-server/packages.pip
 
 frontend-npm: FORCE
 	rm -rf frontend/node_modules
