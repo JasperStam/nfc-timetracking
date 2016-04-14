@@ -9,12 +9,13 @@ dotenv.config({
     path: path.join(__dirname, '../.env'),
 });
 
-const IS_DEBUG = process.env.CY_DEBUG === 'true';
+const IS_DEBUG = process.env.MODUS_DEBUG === 'true';
 const IS_DEV_SERVER = process.argv[1].indexOf('webpack-dev-server') >= 0;
 
 // Plugins that are used for all environments.
 const plugins = [
     new webpack.ProvidePlugin({
+        React: 'react',
     }),
     // Main static file.
     new HtmlWebPackPlugin({
