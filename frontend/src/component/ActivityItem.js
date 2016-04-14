@@ -1,4 +1,5 @@
 import React from 'react';
+import ItemClickable from './ItemClickable';
 
 export default React.createClass({
     propTypes: {
@@ -11,7 +12,8 @@ export default React.createClass({
                 <td>{item.claim.title}</td>
                 <td>{item.tag.title}</td>
                 <td>{item.started_at.format('YYYY-MM-DD')}</td>
-                <td>{item.started_ended_diff.format('h[h] m[m] s[s]')}</td>
+                <td>{item.started_ended_diff ? item.started_ended_diff.format('h[h] m[m] s[s]') : 'In progress'}</td>
+                <td><ItemClickable value={item.description} /></td>
             </tr>
         );
     },
