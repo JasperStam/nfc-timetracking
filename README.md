@@ -12,5 +12,5 @@ apt-get install python3 python-virtualenv
 
 1. `cd python-server`
 2. `python`
-3. `from server import db`
+3. `from db import db`
 4. `db.create_all()`
