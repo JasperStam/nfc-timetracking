@@ -27,6 +27,7 @@ class Activity(db.Model):
         self.claim = claim
         if started_at is None:
             started_at = datetime.utcnow()
+        self.started_at = started_at
         self.ended_at = ended_at
 
     def __repr__(self):
@@ -49,6 +50,7 @@ class Claim(db.Model):
         self.description = description
         if created_at is None:
             created_at = datetime.utcnow()
+        self.created_at = created_at
 
     def __repr__(self):
         return '<Claim %r>' % self.title
