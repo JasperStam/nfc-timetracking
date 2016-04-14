@@ -63,6 +63,9 @@ module.exports = {
                 query: {
                     name: `[name]-${IS_DEV_SERVER ? 'dev' : '[hash:7]'}.[ext]`,
                 },
+            }, {
+                test: /\.css$/,
+                loader: 'style!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
             },
         ],
     },
