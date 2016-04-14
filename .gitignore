@@ -1,4 +1,5 @@
 node_modules/
+sqlite.db
 nfc_db.json
 claim_db.json
 tags_db.json
