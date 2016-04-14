@@ -6,7 +6,6 @@ export default React.createClass({
     },
     render() {
         const item = this.props.item;
-        console.log('hi', item.started_ended_diff);
         return (
             <tr>
                 <td>{item.claim.title}</td>

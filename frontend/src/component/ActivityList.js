@@ -1,5 +1,6 @@
 import React from 'react';
 import ActivityItem from './ActivityItem';
+import styles from './ActivityList.css';
 
 export default React.createClass({
     propTypes: {
@@ -10,13 +11,13 @@ export default React.createClass({
     },
     render() {
         return (
-            <table width="100%">
+            <table className={styles.table}>
                 <thead>
                     <tr>
                         <th>Claim</th>
                         <th>Tag</th>
                         <th>Date</th>
-                        <th>Time ago</th>
+                        <th>Duration</th>
                     </tr>
                 </thead>
                 <tbody>
