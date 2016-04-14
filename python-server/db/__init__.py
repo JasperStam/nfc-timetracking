@@ -43,9 +43,6 @@ class Claim(db.Model):
     tag = db.relationship('Tag',
         backref=db.backref('claims', lazy='dynamic'))
 
-    activities = db.relationship('Activity',
-        backref=db.backref('claim', lazy='dynamic'))
-
     def __init__(self, title, tag, description='', created_at=None):
         self.title = title
         self.tag = tag
@@ -59,16 +56,12 @@ class Claim(db.Model):
 
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50))
+    code = db.Column(db.String(50))
+    description = db.Column(db.String(200))
 
-    activities = db.relationship('Activity',
-        backref=db.backref('tag', lazy='dynamic'))
-
-    claims = db.relationship('Claim',
-        backref=db.backref('tag', lazy='dynamic'))
-
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, code, description=''):
+        self.code = code
+        self.description = description
 
     def __repr__(self):
         return '<Tag %r>' % self.name

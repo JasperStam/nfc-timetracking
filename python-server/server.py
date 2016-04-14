@@ -1,8 +1,8 @@
 from flask import Flask
+from flask import request
 from settings import SETTINGS
-from db import Activity
-from db import Claim
-from db import Tag
+from db import db, Activity, Claim, Tag
+import json
 
 # basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
@@ -13,14 +13,23 @@ def home():
     return 'Hello World!'
 
 
-@app.route('/activity/<int:tag_id>/in', methods=['POST'])
-def activity_checkin(tag_id):
-    # find the tag by tag_id
-    # create a new Activity model with tag
-    return "POST: {0} action in".format(tag_id)
+@app.route('/activity/in', methods=['POST'])
+def activity_checkin():
+    body = request.json
+    # return json.dumps(body)
+    # Get tag by tag_code
+    tag = db.session.query(Tag).filter(Tag.code == body['tag_code']).first()
+    if tag is None:
+        tag = Tag(body['tag_code'])
+        db.session.add(tag)
+
+    activity = Activity(tag)
+    db.session.add(activity)
+    db.session.commit()
+    return str(activity.id)
 
 
-@app.route('/activity/<int:tag_id>/out', methods=['POST'])
+@app.route('/activity/out', methods=['POST'])
 def activity_checkout(tag_id):
     return "POST: {0} action out".format(tag_id)
 
