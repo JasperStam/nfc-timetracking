@@ -21,10 +21,8 @@ def activity_checkin():
     tag = db.session.query(Tag).filter(Tag.code == body['tag_code']).first()
     if tag is None:
         tag = Tag(body['tag_code'])
-        db.session.add(tag)
 
     activity = Activity(tag)
-    db.session.add(activity)
     db.session.commit()
     return str(activity.id)
 
