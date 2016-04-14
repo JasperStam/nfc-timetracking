@@ -18,6 +18,7 @@ export default React.createClass({
                         <th>Tag</th>
                         <th>Date</th>
                         <th>Duration</th>
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
