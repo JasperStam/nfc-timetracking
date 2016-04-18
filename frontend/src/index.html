@@ -1,12 +1,11 @@
 <!DOCTYPE html>
-<html lang="nl">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Modus!</title>
-</head>
-<body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Modus</title>
+  </head>
+  <body>
     <div id="app"></div>
 
     <% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
@@ -16,5 +15,5 @@
     <% if (htmlWebpackPlugin.options.isDevServer) { %>
     <script src="/webpack-dev-server.js"></script>
     <% } %>
-</body>
+  </body>
 </html>
