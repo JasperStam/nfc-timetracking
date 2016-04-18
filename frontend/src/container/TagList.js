@@ -1,17 +1,21 @@
 import React from 'react';
+import axios from 'axios';
 import TagList from 'component/TagList';
-
-const TEMP_DATA = [
-    { id: 1, code: '123APF23', description: '#ff0000', claim: { id: 1, title: 'Project A' } },
-    { id: 2, code: '456KPQ23', description: '#00ff00', claim: null },
-    { id: 3, code: '999TTT12', description: '#339933', claim: { id: 3, title: 'Project Q' } },
-];
 
 export default React.createClass({
     getInitialState() {
         return {
-            tags: TEMP_DATA,
+            tags: [],
         };
+    },
+    componentWillMount() {
+        this.fetchTags();
+    },
+    fetchTags() {
+        axios.get(`${MODUS_CONFIG.apiUrl}/tag`)
+        .then((payload) => {
+            this.setState({ tags: payload.data.data });
+        });
     },
     render() {
         return (
