@@ -60,8 +60,8 @@ class Activity(db.Model):
             'started_at': math.floor(datetime.timestamp(model.started_at)),
             'ended_at': math.floor(datetime.timestamp(model.ended_at)) if model.ended_at is not None else '',
             'description': model.description,
-            'tag_id': model.tag.id,
-            'claim_id': model.claim.id if model.claim else ''
+            'tag': Tag.transform(model.tag) if model.tag else '',
+            'claim': Claim.transform(model.claim) if model.claim else ''
         }
 
     @staticmethod
@@ -71,12 +71,6 @@ class Activity(db.Model):
         for model in collection:
             output.append(Activity.transform(model))
         return output
-
-    # @staticmethod
-    # def get_model
-
-
-
 
 
 class Claim(db.Model):
@@ -104,8 +98,7 @@ class Claim(db.Model):
     def transform(model):
         return {
             'id': model.id,
-            'code': model.code,
-            'description': model.description,
+            'title': model.title,
         }
 
 
@@ -121,3 +114,10 @@ class Tag(db.Model):
     def __repr__(self):
         return '<Tag %r>' % self.name
 
+    @staticmethod
+    def transform(model):
+        return {
+            'id': model.id,
+            'code': model.code,
+            'description': model.description,
+        }
