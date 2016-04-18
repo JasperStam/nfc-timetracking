@@ -27,7 +27,7 @@ export default React.createClass({
             return (
                 <input
                     type="text"
-                    defaultValue={this.state.value}
+                    value={this.state.value}
                     onChange={this.change}
                     onBlur={this.save}
                     autoFocus
