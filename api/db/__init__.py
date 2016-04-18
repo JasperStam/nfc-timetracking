@@ -60,8 +60,8 @@ class Activity(db.Model):
             'started_at': math.floor(datetime.timestamp(model.started_at)),
             'ended_at': math.floor(datetime.timestamp(model.ended_at)) if model.ended_at is not None else '',
             'description': model.description,
-            'tag': Tag.transform(model.tag) if model.tag else '',
-            'claim': Claim.transform(model.claim) if model.claim else ''
+            'tag': Tag.transform(model.tag) if model.tag else None,
+            'claim': Claim.transform(model.claim) if model.claim else None
         }
 
     @staticmethod
@@ -114,10 +114,39 @@ class Tag(db.Model):
     def __repr__(self):
         return '<Tag %r>' % self.name
 
+    def get_latest_claim(self):
+        return self.claims.order_by(Claim.created_at.desc()).first()
+
+
     @staticmethod
-    def transform(model):
-        return {
+    def transform(model, includes=None):
+        claim = model.get_latest_claim()
+        claim = Claim.transform(claim) if claim else None
+
+        base = {
             'id': model.id,
             'code': model.code,
             'description': model.description,
+            'claim': claim.id if claim else None
         }
+
+        if hasattr(includes, 'claim'):
+            base.claim = claim if claim else None
+
+        return base
+
+    @staticmethod
+    def find_all(session):
+        return (
+            session.query(Tag)
+            .all()
+        )
+
+    # copypasta
+    @staticmethod
+    def get_collection(session):
+        collection = Tag.find_all(session)
+        output = []
+        for model in collection:
+            output.append(Tag.transform(model, {'claim': True}))
+        return output

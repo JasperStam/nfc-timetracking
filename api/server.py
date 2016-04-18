@@ -19,8 +19,12 @@ def home():
 def activity_getcollection():
     activities = Activity.get_collection(db.session)
     return json.dumps(activities)
-    # return json.dumps(activities[0])
-    # return jsonify({'activities': activities})
+
+
+@app.route('/tag', methods=['GET'])
+def tag_getcollection():
+    tags = Tag.get_collection(db.session)
+    return json.dumps(tags)
 
 
 @app.route('/activity/in', methods=['POST'])
@@ -41,7 +45,7 @@ def activity_checkin():
     # if claim for tag exists, set that claim id
     activity = Activity(tag)
     db.session.commit()
-    return str(activity.id)
+    return Activity.transform(activity)
 
 
 @app.route('/activity/out', methods=['POST'])
@@ -58,7 +62,7 @@ def activity_checkout():
 
     activity.ended_at = datetime.utcnow()
     db.session.commit()
-    return str(activity.id)
+    return Activity.transform(activity)
 
 if __name__ == '__main__':
     app.run(debug=SETTINGS['DEBUG'])
