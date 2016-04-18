@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemClickable from './ItemClickable';
-import styles from './TagItem.css';
+import ColorBox from './ColorBox';
 
 export default React.createClass({
     propTypes: {
@@ -10,7 +10,7 @@ export default React.createClass({
         const item = this.props.item;
         return (
             <tr>
-                <td><div style={{ background: item.description }} className={styles.colorBox}></div></td>
+                <td><ColorBox color={item.description} /></td>
                 <td><ItemClickable value={item.claim ? item.claim.title : null} /></td>
             </tr>
         );

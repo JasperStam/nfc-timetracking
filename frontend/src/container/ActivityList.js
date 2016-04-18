@@ -21,7 +21,7 @@ export default React.createClass({
     fetchActivities() {
         axios.get(`${MODUS_CONFIG.apiUrl}/activity`)
         .then((payload) => {
-            this.setState({ activities: payload.data.map(normalizeActivity) });
+            this.setState({ activities: payload.data.data.map(normalizeActivity) });
         });
     },
     render() {
