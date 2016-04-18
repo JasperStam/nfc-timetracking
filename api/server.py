@@ -1,5 +1,4 @@
-from flask import Flask
-from flask import request
+from flask import Flask, jsonify, request
 from settings import SETTINGS
 from db import db, Activity, Claim, Tag
 from datetime import datetime
@@ -12,6 +11,14 @@ app = Flask(__name__)
 @app.route('/')
 def home():
     return 'Hello World!'
+
+
+@app.route('/activity', methods=['GET'])
+def activity_getcollection():
+    activities = Activity.get_collection(db.session)
+    return json.dumps(activities)
+    # return json.dumps(activities[0])
+    # return jsonify({'activities': activities})
 
 
 @app.route('/activity/in', methods=['POST'])

@@ -3,6 +3,7 @@ from settings import SETTINGS
 from flask_sqlalchemy import SQLAlchemy
 # import models
 from datetime import datetime
+import math
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + SETTINGS['DB_FILE']
@@ -44,6 +45,36 @@ class Activity(db.Model):
             .first()
         )
 
+    @staticmethod
+    def find_all(session):
+        return (
+            session.query(Activity)
+            .order_by(Activity.started_at.desc())
+            .all()
+        )
+
+    @staticmethod
+    def transform(model):
+        return {
+            'id': model.id,
+            'started_at': math.floor(datetime.timestamp(model.started_at)),
+            'ended_at': math.floor(datetime.timestamp(model.ended_at)) if model.ended_at is not None else '',
+            'description': model.description,
+            'tag_id': model.tag.id,
+            'claim_id': model.claim.id if model.claim else ''
+        }
+
+    @staticmethod
+    def get_collection(session):
+        collection = Activity.find_all(session)
+        output = []
+        for model in collection:
+            output.append(Activity.transform(model))
+        return output
+
+    # @staticmethod
+    # def get_model
+
 
 
 
@@ -68,6 +99,14 @@ class Claim(db.Model):
 
     def __repr__(self):
         return '<Claim %r>' % self.title
+
+    @staticmethod
+    def transform(model):
+        return {
+            'id': model.id,
+            'code': model.code,
+            'description': model.description,
+        }
 
 
 class Tag(db.Model):
