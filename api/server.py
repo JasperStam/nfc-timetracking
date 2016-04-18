@@ -18,13 +18,13 @@ def home():
 @app.route('/activity', methods=['GET'])
 def activity_getcollection():
     activities = Activity.get_collection(db.session)
-    return json.dumps(activities)
+    return jsonify({'data': activities})
 
 
 @app.route('/tag', methods=['GET'])
 def tag_getcollection():
     tags = Tag.get_collection(db.session)
-    return json.dumps(tags)
+    return jsonify({'data': tags})
 
 
 @app.route('/activity/in', methods=['POST'])
