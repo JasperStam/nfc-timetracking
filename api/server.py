@@ -31,9 +31,9 @@ def tag_getcollection():
 def claim_post():
     body = request.json
     # Get tag by tag_code
-    tag = db.session.query(Tag).filter(Tag.code == body['tag_code']).first()
+    tag = db.session.query(Tag).get(body['tag_id'])
     if not tag:
-        return "Tag {0} not found".format(body['tag_code'])
+        return "Tag {0} not found".format(body['tag_id'])
 
     claim = Claim(body['title'], tag)
     db.session.commit()
