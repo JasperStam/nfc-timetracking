@@ -8,7 +8,6 @@ export default React.createClass({
         saveClaim: React.PropTypes.func.isRequired,
     },
     saveClaim(title) {
-        console.log('save cliam!', this.props.item.id, title);
         this.props.saveClaim(this.props.item.id, title);
     },
     render() {

@@ -8,7 +8,7 @@ export default React.createClass({
     getInitialState() {
         return {
             isInput: false,
-            value: '',
+            value: this.props.value,
         };
     },
     input() {
@@ -22,12 +22,12 @@ export default React.createClass({
         this.setState({ value: e.target.value });
     },
     render() {
-        const value = this.props.value || <em>None</em>;
+        const value = this.state.value || <em>None</em>;
         if (this.state.isInput) {
             return (
                 <input
                     type="text"
-                    defaultValue={this.props.value}
+                    defaultValue={this.state.value}
                     onChange={this.change}
                     onBlur={this.save}
                     autoFocus
