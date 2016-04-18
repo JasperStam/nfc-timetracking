@@ -36,8 +36,15 @@ def claim_post():
         return "Tag {0} not found".format(body['tag_id'])
 
     claim = Claim(body['title'], tag)
-    db.session.commit()
+    db.session.add(claim)
 
+    # If an open activity with that tag exists,
+    # link that claim to that activity
+    activity = Activity.get_latest_by_tag_id(db.session, tag.id)
+    if activity and not activity.ended_at:
+        activity.claim = claim
+
+    db.session.commit()
     return json.dumps(Claim.transform(claim))
 
 
@@ -60,7 +67,7 @@ def activity_checkin():
     claim = Claim.get_latest_by_tag_id(db.session, tag.id)
 
     activity = Activity(tag, claim)
-
+    db.session.commit()
     return json.dumps(Activity.transform(activity))
 
 
