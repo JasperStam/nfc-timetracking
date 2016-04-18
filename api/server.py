@@ -2,10 +2,12 @@ from flask import Flask, jsonify, request
 from settings import SETTINGS
 from db import db, Activity, Claim, Tag
 from datetime import datetime
+from flask.ext.cors import CORS
 import json
 
 # basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/')
