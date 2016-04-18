@@ -27,6 +27,20 @@ def tag_getcollection():
     return jsonify({'data': tags})
 
 
+@app.route('/claim', methods=['POST'])
+def claim_post():
+    body = request.json
+    # Get tag by tag_code
+    tag = db.session.query(Tag).filter(Tag.code == body['tag_code']).first()
+    if not tag:
+        return "Tag {0} not found".format(body['tag_code'])
+
+    claim = Claim(body['title'], tag)
+    db.session.commit()
+
+    return json.dumps(Claim.transform(claim))
+
+
 @app.route('/activity/in', methods=['POST'])
 def activity_checkin():
     body = request.json
