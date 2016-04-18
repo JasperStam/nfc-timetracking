@@ -101,6 +101,16 @@ class Claim(db.Model):
             'title': model.title,
         }
 
+    @staticmethod
+    def get_latest_by_tag_id(session, tag_id):
+        return (
+            session.query(Claim)
+            .filter(Claim.tag_id == tag_id)
+            .order_by(Claim.created_at.desc())
+            .first()
+        )
+
+
 
 class Tag(db.Model):
     id = db.Column(db.Integer, primary_key=True)

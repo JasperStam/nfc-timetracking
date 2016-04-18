@@ -52,13 +52,15 @@ def activity_checkin():
 
     activity = Activity.get_latest_by_tag_id(db.session, tag.id)
 
+    # If an activity for that tag still is open, error
     if activity and not activity.ended_at:
         return "Activity {0} still open for this tag".format(activity.id)
 
-    # if activity in progress for tag, close it
-    # if claim for tag exists, set that claim id
-    activity = Activity(tag)
-    db.session.commit()
+    # If a claim for tag exists, set that claim
+    claim = Claim.get_latest_by_tag_id(db.session, tag.id)
+
+    activity = Activity(tag, claim)
+
     return json.dumps(Activity.transform(activity))
 
 
