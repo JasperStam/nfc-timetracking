@@ -13,9 +13,9 @@ def my_request(url, data):
 
 # TODO: Go fuck yourself.
 def post(tag, is_connected):
+    action = 'in' if is_connected else 'out'
     data = json.dumps({
-        'source': tag,
-        'action': 'in' if is_connected else 'out',
+        'tag_code': tag,
     })
     my_request('https://webduck.nl/modus/', data)
-    my_request('http://localhost:3000/', data)
+    my_request('http://localhost:3000/activity/' + action, data)
