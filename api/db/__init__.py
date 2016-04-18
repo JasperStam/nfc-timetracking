@@ -127,11 +127,11 @@ class Tag(db.Model):
             'id': model.id,
             'code': model.code,
             'description': model.description,
-            'claim': claim.id if claim else None
+            'claim': claim['id'] if claim else None
         }
 
-        if hasattr(includes, 'claim'):
-            base.claim = claim if claim else None
+        if includes['claim']:
+            base['claim'] = claim
 
         return base
 
