@@ -45,7 +45,7 @@ def activity_checkin():
     # if claim for tag exists, set that claim id
     activity = Activity(tag)
     db.session.commit()
-    return Activity.transform(activity)
+    return json.dumps(Activity.transform(activity))
 
 
 @app.route('/activity/out', methods=['POST'])
@@ -62,7 +62,7 @@ def activity_checkout():
 
     activity.ended_at = datetime.utcnow()
     db.session.commit()
-    return Activity.transform(activity)
+    return json.dumps(Activity.transform(activity))
 
 if __name__ == '__main__':
     app.run(debug=SETTINGS['DEBUG'])
