@@ -117,9 +117,8 @@ class Tag(db.Model):
     def get_latest_claim(self):
         return self.claims.order_by(Claim.created_at.desc()).first()
 
-
     @staticmethod
-    def transform(model, includes=None):
+    def transform(model, includes={}):
         claim = model.get_latest_claim()
         claim = Claim.transform(claim) if claim else None
 
@@ -130,7 +129,7 @@ class Tag(db.Model):
             'claim': claim['id'] if claim else None
         }
 
-        if includes['claim']:
+        if 'claim' in includes:
             base['claim'] = claim
 
         return base
