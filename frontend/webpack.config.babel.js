@@ -26,6 +26,11 @@ const plugins = [
         title: IS_DEBUG ? 'Modus – DEV' : 'Modus – Just Track',
         isDevServer: IS_DEV_SERVER,
     }),
+    new webpack.DefinePlugin({
+        MODUS_CONFIG: JSON.stringify({
+            apiUrl: process.env.MODUS_API_URL,
+        }),
+    }),
 ];
 
 if (!IS_DEBUG) {

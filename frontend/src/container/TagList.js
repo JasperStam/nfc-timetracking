@@ -1,7 +1,5 @@
 import React from 'react';
 import TagList from 'component/TagList';
-import axios from 'axios';
-import { normalizeActivity } from 'normalize';
 
 const TEMP_DATA = [
     { id: 1, code: '123APF23', description: '#ff0000', claim: { id: 1, title: 'Project A' } },

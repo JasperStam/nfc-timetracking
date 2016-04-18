@@ -11,6 +11,7 @@
         "react/prefer-es6-class": [2, "never"]
     },
     "globals": {
-        "__DEV__": true
+        "__DEV__": true,
+        "MODUS_CONFIG": true
     },
 }
