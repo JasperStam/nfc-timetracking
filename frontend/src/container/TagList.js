@@ -17,9 +17,15 @@ export default React.createClass({
             this.setState({ tags: payload.data.data });
         });
     },
+    saveClaim(tagId, title) {
+        axios.post(`${MODUS_CONFIG.apiUrl}/claim`, {
+            tag_id: tagId,
+            title,
+        });
+    },
     render() {
         return (
-            <TagList tags={this.state.tags} />
+            <TagList tags={this.state.tags} saveClaim={this.saveClaim} />
         );
     },
 });

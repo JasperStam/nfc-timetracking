@@ -5,9 +5,10 @@ import styles from './TagList.css';
 export default React.createClass({
     propTypes: {
         tags: React.PropTypes.array.isRequired,
+        saveClaim: React.PropTypes.func.isRequired,
     },
     renderItem(tag) {
-        return (<TagItem item={tag} key={tag.id} />);
+        return (<TagItem item={tag} key={tag.id} saveClaim={this.props.saveClaim} />);
     },
     render() {
         return (
