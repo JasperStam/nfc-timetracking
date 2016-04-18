@@ -1,13 +1,13 @@
 import React from 'react';
-import ActivityItem from './ActivityItem';
-import styles from './ActivityList.css';
+import TagItem from './TagItem';
+import styles from './TagList.css';
 
 export default React.createClass({
     propTypes: {
-        activities: React.PropTypes.array.isRequired,
+        tags: React.PropTypes.array.isRequired,
     },
-    renderItem(activity) {
-        return (<ActivityItem item={activity} key={activity.id} />);
+    renderItem(tag) {
+        return (<TagItem item={tag} key={tag.id} />);
     },
     render() {
         return (
@@ -15,15 +15,12 @@ export default React.createClass({
                 <table className={styles.table}>
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Claim</th>
-                            <th>Tag</th>
-                            <th>Date</th>
-                            <th>Duration</th>
-                            <th>Description</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.activities.map(this.renderItem)}
+                        {this.props.tags.map(this.renderItem)}
                     </tbody>
                 </table>
             </div>
