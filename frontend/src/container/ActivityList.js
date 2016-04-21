@@ -3,7 +3,7 @@ import ActivityList from 'component/ActivityList';
 import axios from 'axios';
 import { normalizeActivity } from 'normalize';
 
-const REFRESH_INTERVAL = 10000000;
+const REFRESH_INTERVAL = 1000;
 
 export default React.createClass({
     getInitialState() {
