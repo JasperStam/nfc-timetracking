@@ -1,8 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebPackPlugin from 'html-webpack-plugin';
-import pkg from './package.json';
-import fs from 'fs';
 import dotenv from 'dotenv';
 
 dotenv.config({
