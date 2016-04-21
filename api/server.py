@@ -30,7 +30,7 @@ def tag_getcollection():
 @app.route('/claim', methods=['POST'])
 def claim_post():
     body = request.json
-    # Get tag by tag_code
+    # Get tag by tag_id
     tag = db.session.query(Tag).get(body['tag_id'])
     if not tag:
         return "Tag {0} not found".format(body['tag_id'])
@@ -86,6 +86,21 @@ def activity_checkout():
     activity.ended_at = datetime.utcnow()
     db.session.commit()
     return json.dumps(Activity.transform(activity))
+
+
+@app.route('/activity/<int:activity_id>', methods=['PATCH'])
+def activity_patch(activity_id):
+    body = request.json
+
+    # Get activity by activity_id
+    activity = db.session.query(Activity).get(activity_id)
+
+    if body['description']:
+        activity.description = body['description']
+
+    db.session.commit()
+    return json.dumps(Activity.transform(activity))
+
 
 if __name__ == '__main__':
     app.run(debug=SETTINGS['DEBUG'])
