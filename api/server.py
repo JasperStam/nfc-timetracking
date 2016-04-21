@@ -15,19 +15,19 @@ def home():
     return 'Hello World!'
 
 
-@app.route('/activity', methods=['GET'])
+@app.route('/api/activity', methods=['GET'])
 def activity_getcollection():
     activities = Activity.get_collection(db.session)
     return jsonify({'data': activities})
 
 
-@app.route('/tag', methods=['GET'])
+@app.route('/api/tag', methods=['GET'])
 def tag_getcollection():
     tags = Tag.get_collection(db.session)
     return jsonify({'data': tags})
 
 
-@app.route('/claim', methods=['POST'])
+@app.route('/api/claim', methods=['POST'])
 def claim_post():
     body = request.json
     # Get tag by tag_id
@@ -48,7 +48,7 @@ def claim_post():
     return json.dumps(Claim.transform(claim))
 
 
-@app.route('/activity/in', methods=['POST'])
+@app.route('/api/activity/in', methods=['POST'])
 def activity_checkin():
     body = request.json
     # Get tag by tag_code
@@ -71,7 +71,7 @@ def activity_checkin():
     return json.dumps(Activity.transform(activity))
 
 
-@app.route('/activity/out', methods=['POST'])
+@app.route('/api/activity/out', methods=['POST'])
 def activity_checkout():
     body = request.json
     tag = db.session.query(Tag).filter(Tag.code == body['tag_code']).first()
@@ -88,7 +88,7 @@ def activity_checkout():
     return json.dumps(Activity.transform(activity))
 
 
-@app.route('/activity/<int:activity_id>', methods=['PATCH'])
+@app.route('/api/activity/<int:activity_id>', methods=['PATCH'])
 def activity_patch(activity_id):
     body = request.json
 

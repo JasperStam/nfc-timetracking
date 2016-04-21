@@ -17,5 +17,4 @@ def post(tag, is_connected):
     data = json.dumps({
         'tag_code': tag,
     })
-    my_request('https://webduck.nl/modus/', data)
-    my_request('http://localhost:3000/activity/' + action, data)
+    my_request('https://modus.webduck.nl/api/activity/' + action, data)
