@@ -24,9 +24,14 @@ export default React.createClass({
             this.setState({ activities: payload.data.data.map(normalizeActivity) });
         });
     },
+    saveActivity(id, description) {
+        axios.patch(`${MODUS_CONFIG.apiUrl}/activity/${id}`, {
+            description,
+        });
+    },
     render() {
         return (
-            <ActivityList activities={this.state.activities} />
+            <ActivityList activities={this.state.activities} saveActivity={this.saveActivity} />
         );
     },
 });

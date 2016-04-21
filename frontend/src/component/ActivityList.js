@@ -5,9 +5,10 @@ import styles from './ActivityList.css';
 export default React.createClass({
     propTypes: {
         activities: React.PropTypes.array.isRequired,
+        saveActivity: React.PropTypes.func.isRequired,
     },
     renderItem(activity) {
-        return (<ActivityItem item={activity} key={activity.id} />);
+        return (<ActivityItem item={activity} key={activity.id} saveActivity={this.props.saveActivity} />);
     },
     render() {
         return (

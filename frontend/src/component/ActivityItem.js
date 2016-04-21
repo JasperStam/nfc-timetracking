@@ -6,9 +6,10 @@ import styles from './ActivityItem.css';
 export default React.createClass({
     propTypes: {
         item: React.PropTypes.object.isRequired,
+        saveActivity: React.PropTypes.func.isRequired,
     },
     saveDescription(value) {
-        console.log('save description', value);
+        this.props.saveActivity(this.props.item.id, value);
     },
     render() {
         const item = this.props.item;
