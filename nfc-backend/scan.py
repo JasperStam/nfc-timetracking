@@ -34,6 +34,8 @@ def on_tag_connect(tag):
     new_tag = str(tag)
 
     if old_tag != new_tag:
+        if old_tag != '':
+            tag_released(old_tag)
         tag_connected(new_tag)
 
     old_tag = new_tag
