@@ -1,0 +1,22 @@
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: var(--black);
+    color: white;
+}
+
+th {
+    padding: 1rem;
+}
+
+tr:nth-child(even) {
+    background: var(--off-white);
+}
+
+td {
+    padding: 1rem;
+    white-space: nowrap;
+}

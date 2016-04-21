@@ -1,0 +1,10 @@
+.clickable {
+    cursor: pointer;
+}
+
+.input {
+    background: transparent;
+    border: none;
+    outline: none;
+    opacity: .6;
+}

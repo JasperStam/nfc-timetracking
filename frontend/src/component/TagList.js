@@ -16,7 +16,7 @@ export default React.createClass({
                 <table className={styles.table}>
                     <thead>
                         <tr>
-                            <th>#</th>
+                            <th>Tag</th>
                             <th>Claim</th>
                         </tr>
                     </thead>

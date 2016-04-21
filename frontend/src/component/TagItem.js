@@ -1,6 +1,7 @@
 import React from 'react';
 import ItemClickable from './ItemClickable';
 import ColorBox from './ColorBox';
+import styles from './ActivityItem.css';
 
 export default React.createClass({
     propTypes: {
@@ -15,7 +16,7 @@ export default React.createClass({
         return (
             <tr>
                 <td><ColorBox color={item.description} /></td>
-                <td><ItemClickable value={item.claim ? item.claim.title : null} save={this.saveClaim} /></td>
+                <td className={styles.expand}><ItemClickable value={item.claim ? item.claim.title : null} save={this.saveClaim} /></td>
             </tr>
         );
     },

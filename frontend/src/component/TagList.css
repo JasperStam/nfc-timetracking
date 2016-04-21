@@ -1,7 +1,8 @@
 .container {
     flex: 1;
+    padding: 1rem;
 }
 
 .table {
-    width: 100%;
+    composes: table from 'style/table.css';
 }

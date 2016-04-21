@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './ItemClickable.css';
 
 export default React.createClass({
     propTypes: {
@@ -26,6 +27,7 @@ export default React.createClass({
         if (this.state.isInput) {
             return (
                 <input
+                    className={styles.input}
                     type="text"
                     value={this.state.value}
                     onChange={this.change}
@@ -35,7 +37,7 @@ export default React.createClass({
             );
         }
         return (
-            <span onClick={this.input}>{value}</span>
+            <span className={styles.clickable} onClick={this.input}>{value}</span>
         );
     },
 });
