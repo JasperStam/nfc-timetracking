@@ -6,4 +6,5 @@ tags_db.json
 .env
 venv/
 __pycache__/
+frontend/dist/
 *npm-debug.log
