@@ -28,6 +28,7 @@ const plugins = [
         MODUS_CONFIG: JSON.stringify({
             apiUrl: process.env.MODUS_API_URL,
         }),
+        'process.env.NODE_ENV': JSON.stringify(IS_DEBUG ? 'development' : 'production'),
     }),
 ];
 
