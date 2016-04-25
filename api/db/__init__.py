@@ -112,6 +112,21 @@ class Claim(db.Model):
             .first()
         )
 
+    @staticmethod
+    def find_all(session):
+        return (
+            session.query(Claim)
+            .order_by(Claim.created_at.desc())
+            .all()
+        )
+
+    @staticmethod
+    def get_collection(session):
+        collection = Claim.find_all(session)
+        output = []
+        for model in collection:
+            output.append(Claim.transform(model))
+        return output
 
 
 class Tag(db.Model):

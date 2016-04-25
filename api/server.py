@@ -21,6 +21,12 @@ def activity_getcollection():
     return jsonify({'data': activities})
 
 
+@app.route('/api/claim', methods=['GET'])
+def claim_getcollection():
+    claims = Claim.get_collection(db.session)
+    return jsonify({'data': claims})
+
+
 @app.route('/api/tag', methods=['GET'])
 def tag_getcollection():
     tags = Tag.get_collection(db.session)
