@@ -27,7 +27,7 @@ export default React.createClass({
     },
     render() {
         const item = this.props.item;
-        console.log(item);
+
         return (
             <tr>
                 <td>{item.claim ? item.claim.title : (<em>None</em>)}</td>
