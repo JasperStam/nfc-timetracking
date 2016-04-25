@@ -13,12 +13,13 @@ export default React.createClass({
     render() {
         return (
             <div className={styles.container}>
+                <h1>Today’s activities</h1>
                 <table className={styles.table}>
                     <thead>
                         <tr>
-                            <th>Claim</th>
-                            <th>Tag</th>
-                            <th>Date</th>
+                            <th>Project</th>
+                            <th>From</th>
+                            <th>To</th>
                             <th>Duration</th>
                             <th>Description</th>
                         </tr>

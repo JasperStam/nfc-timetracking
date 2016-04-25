@@ -6,3 +6,7 @@
 .expand input {
     width: 100%;
 }
+
+.light {
+    opacity: .3;
+}

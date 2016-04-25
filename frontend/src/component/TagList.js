@@ -16,7 +16,9 @@ export default React.createClass({
             <div className={styles.container}>
                 <h1>Active tags</h1>
                 <table className={styles.table}>
-                    {this.props.tags.map(this.renderItem)}
+                    <tbody>
+                        {this.props.tags.map(this.renderItem)}
+                    </tbody>
                 </table>
             </div>
         );

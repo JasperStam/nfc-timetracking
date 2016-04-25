@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemClickable from './ItemClickable';
-import ColorBox from './ColorBox';
+import InProgress from './InProgress';
 import styles from './ActivityItem.css';
 
 export default React.createClass({
@@ -11,13 +11,28 @@ export default React.createClass({
     saveDescription(value) {
         this.props.saveActivity(this.props.item.id, value);
     },
+    renderTime(at) {
+        if (!at) {
+            return (
+                <InProgress />
+            );
+        }
+
+        return (
+            <div>
+                {at.format('LT')}
+                <span className={styles.light}>{at.format(':ss')}</span>
+            </div>
+        );
+    },
     render() {
         const item = this.props.item;
+        console.log(item);
         return (
             <tr>
-                <td>{item.claim ? item.claim.title : 'None'}</td>
-                <td><ColorBox color={item.tag.description} /></td>
-                <td>{item.started_at.format('YYYY-MM-DD')} at {item.started_at.format('h:mm')}</td>
+                <td>{item.claim ? item.claim.title : (<em>None</em>)}</td>
+                <td>{this.renderTime(item.started_at)}</td>
+                <td>{this.renderTime(item.ended_at)}</td>
                 <td>{item.started_ended_diff ? item.started_ended_diff.format('h[h] m[m] s[s]') : 'In progress'}</td>
                 <td className={styles.expand}><ItemClickable value={item.description} save={this.saveDescription} /></td>
             </tr>
