@@ -14,16 +14,9 @@ export default React.createClass({
     render() {
         return (
             <div className={styles.container}>
+                <h1>Active tags</h1>
                 <table className={styles.table}>
-                    <thead>
-                        <tr>
-                            <th>Tag</th>
-                            <th>Claim</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.tags.map(this.renderItem)}
-                    </tbody>
+                    {this.props.tags.map(this.renderItem)}
                 </table>
             </div>
         );

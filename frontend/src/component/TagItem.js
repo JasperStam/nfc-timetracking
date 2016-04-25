@@ -1,6 +1,6 @@
 import React from 'react';
 import ColorBox from './ColorBox';
-import styles from './ActivityItem.css';
+import styles from './TagItem.css';
 import Select from 'react-select';
 
 export default React.createClass({

@@ -1,6 +1,6 @@
 .container {
     flex: 2;
-    padding: 1rem;
+    border-right: 1px solid var(--off-white);
 }
 
 .table {

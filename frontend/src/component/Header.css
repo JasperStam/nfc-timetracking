@@ -1,6 +1,5 @@
 .header {
-    padding: 1rem;
     font-size: 2rem;
-    text-align: center;
-    background: linear-gradient(to bottom right, #bfe5eb, #bcc7d5);
+    font-weight: 300;
+    background: linear-gradient(to bottom right, #bfe5eb, #f5ecf7);
 }

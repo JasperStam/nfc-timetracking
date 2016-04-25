@@ -4,16 +4,19 @@
 }
 
 thead {
-    background: var(--black);
-    color: white;
+    font-weight: 400;
 }
 
 th {
     padding: 1rem;
 }
 
-tr:nth-child(even) {
-    background: var(--off-white);
+tr {
+    border-bottom: 1px solid var(--off-white);
+}
+
+tr:last-child {
+    border-bottom: 0;
 }
 
 td {
