@@ -98,6 +98,12 @@ def activity_patch(activity_id):
     if body['description']:
         activity.description = body['description']
 
+    if body['started_at']:
+        activity.started_at = body['started_at']
+
+    if body['ended_at']:
+        activity.ended_at = body['ended_at']
+
     db.session.commit()
     return json.dumps(Activity.transform(activity))
 
