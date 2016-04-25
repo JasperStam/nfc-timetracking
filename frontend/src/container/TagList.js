@@ -6,15 +6,23 @@ export default React.createClass({
     getInitialState() {
         return {
             tags: [],
+            claims: [],
         };
     },
     componentWillMount() {
         this.fetchTags();
+        this.fetchClaims();
     },
     fetchTags() {
         axios.get(`${MODUS_CONFIG.apiUrl}/tag`)
         .then((payload) => {
             this.setState({ tags: payload.data.data });
+        });
+    },
+    fetchClaims() {
+        axios.get(`${MODUS_CONFIG.apiUrl}/claim`)
+        .then((payload) => {
+            this.setState({ claims: payload.data.data });
         });
     },
     saveClaim(tagId, title) {
@@ -25,7 +33,7 @@ export default React.createClass({
     },
     render() {
         return (
-            <TagList tags={this.state.tags} saveClaim={this.saveClaim} />
+            <TagList tags={this.state.tags} claims={this.state.claims} saveClaim={this.saveClaim} />
         );
     },
 });

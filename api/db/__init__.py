@@ -122,8 +122,7 @@ class Claim(db.Model):
     @staticmethod
     def find_all(session):
         return (
-            session.query(Claim)
-            .order_by(Claim.created_at.desc())
+            session.query(Claim.title.distinct().label('title'))
             .all()
         )
 
@@ -132,7 +131,7 @@ class Claim(db.Model):
         collection = Claim.find_all(session)
         output = []
         for model in collection:
-            output.append(Claim.transform(model))
+            output.append(model.title)
         return output
 
 
