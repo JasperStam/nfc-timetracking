@@ -1,14 +1,21 @@
 from flask import Flask
 from settings import SETTINGS
 from flask_sqlalchemy import SQLAlchemy
-# import models
 from datetime import datetime
+import pytz
 import math
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + SETTINGS['DB_FILE']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+amsterdam = pytz.timezone('Europe/Amsterdam')
+
+
+def get_local_epoch(utc_time):
+    global amsterdam
+    loc_dt = utc_time.replace(tzinfo=pytz.utc).astimezone(amsterdam)
+    return loc_dt.strftime('%s')
 
 
 class Activity(db.Model):
@@ -58,8 +65,8 @@ class Activity(db.Model):
     def transform(model):
         return {
             'id': model.id,
-            'started_at': math.floor(datetime.timestamp(model.started_at)),
-            'ended_at': math.floor(datetime.timestamp(model.ended_at)) if model.ended_at is not None else '',
+            'started_at': get_local_epoch(model.started_at),
+            'ended_at': get_local_epoch(model.ended_at) if model.ended_at is not None else '',
             'description': model.description,
             'tag': Tag.transform(model.tag) if model.tag else None,
             'claim': Claim.transform(model.claim) if model.claim else None,
