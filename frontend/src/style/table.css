@@ -12,11 +12,7 @@ th {
 }
 
 tr {
-    border-bottom: 1px solid var(--off-white);
-}
-
-tr:last-child {
-    border-bottom: 0;
+    border-top: 1px solid var(--off-white);
 }
 
 td {

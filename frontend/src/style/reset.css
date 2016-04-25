@@ -21,3 +21,7 @@ h1 {
     padding: 1rem;
     text-align: center;
 }
+
+em {
+    opacity: .4;
+}
