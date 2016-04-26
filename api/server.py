@@ -101,13 +101,13 @@ def activity_patch(activity_id):
     # Get activity by activity_id
     activity = db.session.query(Activity).get(activity_id)
 
-    if body['description']:
+    if body.get('description'):
         activity.description = body['description']
 
-    if body['started_at']:
+    if body.get('started_at'):
         activity.started_at = body['started_at']
 
-    if body['ended_at']:
+    if body.get('ended_at'):
         activity.ended_at = body['ended_at']
 
     db.session.commit()
