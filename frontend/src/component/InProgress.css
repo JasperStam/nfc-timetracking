@@ -1,3 +1,7 @@
+.container {
+    text-align: center;
+}
+
 .container span {
     animation-name: twinkle;
     animation-duration: 1s;
