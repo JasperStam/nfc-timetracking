@@ -18,6 +18,13 @@ export default React.createClass({
             .minute(minute);
         this.props.saveActivity(this.props.item.id, { started_at: startedAt.format() });
     },
+    saveEndedAt(hour, minute) {
+        const endedAt = this.props.item.ended_at
+            .clone()
+            .hour(hour)
+            .minute(minute);
+        this.props.saveActivity(this.props.item.id, { ended_at: endedAt.format() });
+    },
     render() {
         const item = this.props.item;
 
@@ -25,7 +32,7 @@ export default React.createClass({
             <tr>
                 <td>{item.claim ? item.claim.title : (<em>None</em>)}</td>
                 <td><Time at={item.started_at} save={this.saveStartedAt} /></td>
-                <td><Time at={item.ended_at} /></td>
+                <td><Time at={item.ended_at} save={this.saveEndedAt} /></td>
                 <td className={styles.duration}>{item.started_ended_diff ? item.started_ended_diff.format('h[h] m[m] s[s]') : 'In progress'}</td>
                 <td className={styles.expand}><ItemClickable value={item.description} save={this.saveDescription} /></td>
             </tr>
