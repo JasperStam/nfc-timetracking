@@ -6,10 +6,9 @@ export default React.createClass({
     propTypes: {
         activities: React.PropTypes.array.isRequired,
         saveActivity: React.PropTypes.func.isRequired,
-        saveStartedAt: React.PropTypes.func.isRequired,
     },
     renderItem(activity) {
-        return (<ActivityItem item={activity} key={activity.id} saveActivity={this.props.saveActivity} saveStartedAt={this.props.saveStartedAt} />);
+        return (<ActivityItem item={activity} key={activity.id} saveActivity={this.props.saveActivity} />);
     },
     render() {
         return (

@@ -7,18 +7,16 @@ export default React.createClass({
     propTypes: {
         item: React.PropTypes.object.isRequired,
         saveActivity: React.PropTypes.func.isRequired,
-        saveStartedAt: React.PropTypes.func.isRequired,
     },
     saveDescription(value) {
-        this.props.saveActivity(this.props.item.id, value);
+        this.props.saveActivity(this.props.item.id, { description: value });
     },
     saveStartedAt(hour, minute) {
-        const timestamp = this.props.item.started_at
+        const startedAt = this.props.item.started_at
             .clone()
             .hour(hour)
-            .minute(minute)
-            .unix();
-        this.props.saveStartedAt(this.props.item.id, timestamp);
+            .minute(minute);
+        this.props.saveActivity(this.props.item.id, { started_at: startedAt });
     },
     render() {
         const item = this.props.item;

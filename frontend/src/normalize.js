@@ -2,9 +2,9 @@ import moment from 'moment';
 moment.locale('en-gb');
 
 export function normalizeActivity(item) {
-    const startedAt = moment.unix(item.started_at);
-    const endedAt = item.ended_at ? moment.unix(item.ended_at) : null;
-    const ended = endedAt || moment.unix(item.now);
+    const startedAt = moment(item.started_at);
+    const endedAt = item.ended_at ? moment(item.ended_at) : null;
+    const ended = endedAt || moment();
     return {
         ...item,
         started_at: startedAt,

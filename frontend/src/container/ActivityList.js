@@ -24,19 +24,12 @@ export default React.createClass({
             this.setState({ activities: payload.data.data.map(normalizeActivity) });
         });
     },
-    saveActivity(id, description) {
-        axios.patch(`${MODUS_CONFIG.apiUrl}/activity/${id}`, {
-            description,
-        });
-    },
-    saveStartedAt(id, startedAt) {
-        axios.patch(`${MODUS_CONFIG.apiUrl}/activity/${id}`, {
-            started_at: startedAt,
-        });
+    saveActivity(id, data) {
+        return axios.patch(`${MODUS_CONFIG.apiUrl}/activity/${id}`, data);
     },
     render() {
         return (
-            <ActivityList activities={this.state.activities} saveActivity={this.saveActivity} saveStartedAt={this.saveStartedAt} />
+            <ActivityList activities={this.state.activities} saveActivity={this.saveActivity} />
         );
     },
 });
