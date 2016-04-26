@@ -8,11 +8,22 @@ export default React.createClass({
         at: React.PropTypes.object,
         save: React.PropTypes.func.isRequired,
     },
-    save(e) {
-        const value = e.target.value.split(':');
+    getInitialState() {
+        return {
+            value: this.props.at ? this.props.at.format('H:mm') : '',
+        };
+    },
+    save() {
+        const value = this.state.value.split(':');
         this.props.save(value[0], value[1]);
     },
-    doNothing() {},
+    submit(e) {
+        e.preventDefault();
+        this.save();
+    },
+    change(e) {
+        this.setState({ value: e.target.value });
+    },
     render() {
         if (!this.props.at) {
             return (
@@ -21,16 +32,18 @@ export default React.createClass({
         }
 
         return (
-            <MaskedInput
-                className={styles.container}
-                mask="11:11"
-                placeholder="00:00"
-                placeholderChar="–"
-                name="card"
-                value={this.props.at.format('H:mm')}
-                onChange={this.doNothing}
-                onBlur={this.save}
-            />
+            <form onSubmit={this.submit}>
+                <MaskedInput
+                    className={styles.container}
+                    mask="11:11"
+                    placeholder="00:00"
+                    placeholderChar="–"
+                    name="card"
+                    value={this.state.value}
+                    onChange={this.change}
+                    onBlur={this.save}
+                />
+            </form>
         );
     },
 });
