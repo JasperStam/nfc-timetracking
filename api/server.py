@@ -4,19 +4,10 @@ from db import db, Activity, Claim, Tag
 from datetime import datetime
 from flask.ext.cors import CORS
 import json
-import pytz
 
 # basedir = os.path.abspath(os.path.dirname(__file__))
-amsterdam = pytz.timezone('Europe/Amsterdam')
 app = Flask(__name__)
 CORS(app)
-
-
-def get_utc_epoch_from_unix(uts):
-    global amsterdam
-    loc_dt = datetime.fromtimestamp(int(uts))
-    utc_dt = loc_dt.replace(tzinfo=amsterdam).astimezone(pytz.utc)
-    return utc_dt
 
 
 @app.route('/')
@@ -114,10 +105,10 @@ def activity_patch(activity_id):
         activity.description = body['description']
 
     if body.get('started_at'):
-        activity.started_at = get_utc_epoch_from_unix(body['started_at'])
+        activity.started_at = datetime.fromtimestamp(int(body['started_at']))
 
     if body.get('ended_at'):
-        activity.ended_at = get_utc_epoch_from_unix(body['ended_at'])
+        activity.ended_at = datetime.fromtimestamp(int(body['ended_at']))
 
     db.session.commit()
     return json.dumps(Activity.transform(activity))

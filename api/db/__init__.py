@@ -12,10 +12,8 @@ db = SQLAlchemy(app)
 amsterdam = pytz.timezone('Europe/Amsterdam')
 
 
-def get_local_epoch(utc_time):
-    global amsterdam
-    loc_dt = utc_time.replace(tzinfo=pytz.utc).astimezone(amsterdam)
-    return loc_dt.strftime('%s')
+def get_iso8601(ts):
+    return ts.strftime('%Y-%m-%dT%H:%M:%S%z')
 
 
 class Activity(db.Model):
@@ -65,8 +63,9 @@ class Activity(db.Model):
     def transform(model):
         return {
             'id': model.id,
-            'started_at': get_local_epoch(model.started_at),
-            'ended_at': get_local_epoch(model.ended_at) if model.ended_at is not None else '',
+            'started_at': get_iso8601(model.started_at),
+            'ended_at': get_iso8601(model.ended_at) if model.ended_at is not None else '',
+            # 'ended_at': math.floor(datetime.timestamp(model.ended_at)) if model.ended_at is not None else '',
             'description': model.description,
             'tag': Tag.transform(model.tag) if model.tag else None,
             'claim': Claim.transform(model.claim) if model.claim else None,
