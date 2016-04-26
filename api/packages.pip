@@ -3,4 +3,6 @@ dotenv==0.0.5
 gunicorn==19.3.0
 Flask-SQLAlchemy==2.1
 flask-cors==2.1.2
+pytz==2016.4
+python-dateutil==2.5.3
 iso8601==0.1.11

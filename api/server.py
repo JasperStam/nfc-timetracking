@@ -3,11 +3,20 @@ from settings import SETTINGS
 from db import db, Activity, Claim, Tag
 from datetime import datetime
 from flask.ext.cors import CORS
+from dateutil import parser
 import json
+import pytz
+# import iso8601
 
 # basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
 CORS(app)
+
+
+def from_iso8601(iso_dt):
+    dt_local = parser.parse(iso_dt)
+    dt_utc = dt_local.astimezone(pytz.utc)
+    return dt_utc.replace(tzinfo=None)
 
 
 @app.route('/')
@@ -105,10 +114,10 @@ def activity_patch(activity_id):
         activity.description = body['description']
 
     if body.get('started_at'):
-        activity.started_at = datetime.fromtimestamp(int(body['started_at']))
+        activity.started_at = from_iso8601(body['started_at'])
 
     if body.get('ended_at'):
-        activity.ended_at = datetime.fromtimestamp(int(body['ended_at']))
+        activity.ended_at = from_iso8601(body['ended_at'])
 
     db.session.commit()
     return json.dumps(Activity.transform(activity))
