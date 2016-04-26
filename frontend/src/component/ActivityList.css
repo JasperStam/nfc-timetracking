@@ -6,3 +6,8 @@
 .table {
     composes: table from 'style/table.css';
 }
+
+.duration {
+    text-align: right;
+    min-width: 130px;
+}

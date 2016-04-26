@@ -3,7 +3,7 @@ import ActivityList from 'component/ActivityList';
 import axios from 'axios';
 import { normalizeActivity } from 'normalize';
 
-const REFRESH_INTERVAL = 1000;
+const REFRESH_INTERVAL = 100000000;
 
 export default React.createClass({
     getInitialState() {
@@ -29,9 +29,14 @@ export default React.createClass({
             description,
         });
     },
+    saveStartedAt(id, startedAt) {
+        axios.patch(`${MODUS_CONFIG.apiUrl}/activity/${id}`, {
+            started_at: startedAt,
+        });
+    },
     render() {
         return (
-            <ActivityList activities={this.state.activities} saveActivity={this.saveActivity} />
+            <ActivityList activities={this.state.activities} saveActivity={this.saveActivity} saveStartedAt={this.saveStartedAt} />
         );
     },
 });

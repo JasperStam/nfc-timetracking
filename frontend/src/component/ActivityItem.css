@@ -10,3 +10,7 @@
 .light {
     opacity: .4;
 }
+
+.duration {
+    text-align: right;
+}

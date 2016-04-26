@@ -6,9 +6,10 @@ export default React.createClass({
     propTypes: {
         activities: React.PropTypes.array.isRequired,
         saveActivity: React.PropTypes.func.isRequired,
+        saveStartedAt: React.PropTypes.func.isRequired,
     },
     renderItem(activity) {
-        return (<ActivityItem item={activity} key={activity.id} saveActivity={this.props.saveActivity} />);
+        return (<ActivityItem item={activity} key={activity.id} saveActivity={this.props.saveActivity} saveStartedAt={this.props.saveStartedAt} />);
     },
     render() {
         return (
@@ -20,7 +21,7 @@ export default React.createClass({
                             <th>Project</th>
                             <th>From</th>
                             <th>To</th>
-                            <th>Duration</th>
+                            <th className={styles.duration}>Duration</th>
                             <th>Description</th>
                         </tr>
                     </thead>
