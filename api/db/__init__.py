@@ -2,18 +2,16 @@ from flask import Flask
 from settings import SETTINGS
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-import pytz
 import math
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + SETTINGS['DB_FILE']
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
-amsterdam = pytz.timezone('Europe/Amsterdam')
 
 
 def get_iso8601(ts):
-    return ts.strftime('%Y-%m-%dT%H:%M:%S%z')
+    return ts.strftime('%Y-%m-%dT%H:%M:%S%z+0000')
 
 
 class Activity(db.Model):
