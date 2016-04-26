@@ -97,6 +97,7 @@ def activity_checkout():
 @app.route('/api/activity/<int:activity_id>', methods=['PATCH'])
 def activity_patch(activity_id):
     body = request.json
+    # return json.dumps(body)
 
     # Get activity by activity_id
     activity = db.session.query(Activity).get(activity_id)
@@ -105,10 +106,11 @@ def activity_patch(activity_id):
         activity.description = body['description']
 
     if body.get('started_at'):
-        activity.started_at = body['started_at']
+        activity.started_at = datetime.fromtimestamp(int(body['started_at']))
 
     if body.get('ended_at'):
-        activity.ended_at = body['ended_at']
+        activity.ended_at = datetime.fromtimestamp(int(body['ended_at']))
+        # activity.ended_at = body['ended_at']
 
     db.session.commit()
     return json.dumps(Activity.transform(activity))
