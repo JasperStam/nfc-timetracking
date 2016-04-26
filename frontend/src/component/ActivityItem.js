@@ -16,7 +16,7 @@ export default React.createClass({
             .clone()
             .hour(hour)
             .minute(minute);
-        this.props.saveActivity(this.props.item.id, { started_at: startedAt });
+        this.props.saveActivity(this.props.item.id, { started_at: startedAt.format() });
     },
     render() {
         const item = this.props.item;

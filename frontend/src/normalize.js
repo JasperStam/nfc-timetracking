@@ -1,5 +1,4 @@
 import moment from 'moment';
-moment.locale('en-gb');
 
 export function normalizeActivity(item) {
     const startedAt = moment(item.started_at);
