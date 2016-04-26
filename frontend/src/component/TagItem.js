@@ -15,7 +15,7 @@ export default React.createClass({
         };
     },
     saveClaim(option) {
-        const claimTitle = option ? option.value : null;
+        const claimTitle = option || null;
         this.setState({ claimTitle });
         this.props.saveClaim(this.props.item.id, claimTitle);
     },
@@ -36,6 +36,7 @@ export default React.createClass({
                     <Select
                         options={options}
                         value={this.state.claimTitle}
+                        allowCreate
                         onChange={this.saveClaim}
                     />
 
