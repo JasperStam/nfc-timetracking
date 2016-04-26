@@ -63,11 +63,9 @@ class Activity(db.Model):
             'id': model.id,
             'started_at': get_iso8601(model.started_at),
             'ended_at': get_iso8601(model.ended_at) if model.ended_at is not None else '',
-            # 'ended_at': math.floor(datetime.timestamp(model.ended_at)) if model.ended_at is not None else '',
             'description': model.description,
             'tag': Tag.transform(model.tag) if model.tag else None,
-            'claim': Claim.transform(model.claim) if model.claim else None,
-            'now': datetime.timestamp(datetime.utcnow())
+            'claim': Claim.transform(model.claim) if model.claim else None
         }
 
     @staticmethod
