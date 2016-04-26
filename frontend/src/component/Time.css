@@ -1,0 +1,10 @@
+.container {
+    font-size: 1rem;
+    font-weight: 300;
+    text-align: center;
+    border: 0;
+}
+
+.container:focus {
+    outline: 0;
+}

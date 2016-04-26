@@ -1,6 +1,6 @@
 import React from 'react';
 import ItemClickable from './ItemClickable';
-import InProgress from './InProgress';
+import Time from './Time';
 import styles from './ActivityItem.css';
 
 export default React.createClass({
@@ -9,21 +9,14 @@ export default React.createClass({
         saveActivity: React.PropTypes.func.isRequired,
     },
     saveDescription(value) {
-        this.props.saveActivity(this.props.item.id, value);
+        this.props.saveActivity(this.props.item.id, { description: value });
     },
-    renderTime(at) {
-        if (!at) {
-            return (
-                <InProgress />
-            );
-        }
-
-        return (
-            <div>
-                {at.format('LT')}
-                <span className={styles.light}>{at.format(':ss')}</span>
-            </div>
-        );
+    saveStartedAt(hour, minute) {
+        const startedAt = this.props.item.started_at
+            .clone()
+            .hour(hour)
+            .minute(minute);
+        this.props.saveActivity(this.props.item.id, { started_at: startedAt });
     },
     render() {
         const item = this.props.item;
@@ -31,9 +24,9 @@ export default React.createClass({
         return (
             <tr>
                 <td>{item.claim ? item.claim.title : (<em>None</em>)}</td>
-                <td>{this.renderTime(item.started_at)}</td>
-                <td>{this.renderTime(item.ended_at)}</td>
-                <td>{item.started_ended_diff ? item.started_ended_diff.format('h[h] m[m] s[s]') : 'In progress'}</td>
+                <td><Time at={item.started_at} save={this.saveStartedAt} /></td>
+                <td><Time at={item.ended_at} /></td>
+                <td className={styles.duration}>{item.started_ended_diff ? item.started_ended_diff.format('h[h] m[m] s[s]') : 'In progress'}</td>
                 <td className={styles.expand}><ItemClickable value={item.description} save={this.saveDescription} /></td>
             </tr>
         );

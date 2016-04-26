@@ -20,7 +20,7 @@ export default React.createClass({
                             <th>Project</th>
                             <th>From</th>
                             <th>To</th>
-                            <th>Duration</th>
+                            <th className={styles.duration}>Duration</th>
                             <th>Description</th>
                         </tr>
                     </thead>
