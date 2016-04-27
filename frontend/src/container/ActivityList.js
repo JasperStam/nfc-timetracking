@@ -2,7 +2,7 @@ import React from 'react';
 import ActivityList from 'component/ActivityList';
 import axios from 'axios';
 import { normalizeActivity } from 'normalize';
-import _ from 'lodash';
+// import _ from 'lodash';
 
 const REFRESH_INTERVAL = 1000;
 
