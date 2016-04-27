@@ -26,12 +26,12 @@ export default React.createClass({
         const value = this.state.value || <em>None</em>;
         if (this.state.isInput) {
             return (
-                <input
+                <textarea
                     className={styles.input}
-                    type="text"
                     value={this.state.value}
                     onChange={this.change}
                     onBlur={this.save}
+                    rows="3"
                     autoFocus
                 />
             );

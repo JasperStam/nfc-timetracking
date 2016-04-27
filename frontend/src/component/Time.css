@@ -3,6 +3,12 @@
     font-weight: 300;
     text-align: center;
     border: 0;
+    cursor: pointer;
+}
+
+.container:hover,
+.container:focus {
+    background: var(--off-white);
 }
 
 .container:focus {

@@ -1,10 +1,19 @@
 .clickable {
+    display: block;
     cursor: pointer;
 }
 
+.clickable:hover {
+    background: var(--off-white);
+}
+
 .input {
-    background: transparent;
+    background: var(--off-white);
     border: none;
     outline: none;
-    opacity: .6;
+    opacity: .8;
+    font-size: inherit;
+    font-weight: inherit;
+    width: 100%;
+    resize: vertical;
 }
