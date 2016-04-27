@@ -10,7 +10,7 @@ export default React.createClass({
     },
     getInitialState() {
         return {
-            value: this.props.at ? this.props.at.format('H:mm') : '',
+            value: this.props.at ? this.props.at.format('HH:mm') : '',
         };
     },
     save() {
