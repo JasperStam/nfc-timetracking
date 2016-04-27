@@ -1,4 +1,5 @@
 .expand {
     width: 100%;
     white-space: initial;
+    border-collapse: separate;
 }
