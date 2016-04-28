@@ -39,7 +39,7 @@ export default React.createClass({
                     placeholder="00:00"
                     placeholderChar="–"
                     name="card"
-                    value={this.state.value}
+                    value={this.props.at.format('HH:mm')}
                     onChange={this.change}
                     onBlur={this.save}
                 />
