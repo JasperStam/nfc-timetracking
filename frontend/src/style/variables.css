@@ -7,4 +7,5 @@
     --pink: #f5ecf7;
 
     --transition-timing: cubic-bezier(.2, 0, .2, 1);
+    --transition-timing-reverse: cubic-bezier(.8, 0, .8, 1);
 }

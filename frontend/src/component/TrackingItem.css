@@ -17,7 +17,7 @@
 
 .container:global.grow-leave.grow-leave-active {
     margin-bottom: -50px;
-    transition: margin 200ms var(--transition-timing);
+    transition: margin 200ms var(--transition-timing-reverse);
 }
 
 .left {
