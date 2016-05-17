@@ -4,11 +4,12 @@
     text-align: center;
     border: 0;
     cursor: pointer;
+    background: transparent;
 }
 
 .container:hover,
 .container:focus {
-    background: var(--off-white);
+    background: rgba(0, 0, 0, .1);
 }
 
 .container:focus {

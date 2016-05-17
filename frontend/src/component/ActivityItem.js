@@ -2,6 +2,7 @@ import React from 'react';
 import ItemClickable from './ItemClickable';
 import Time from './Time';
 import styles from './ActivityItem.css';
+import Duration from './Duration';
 
 export default React.createClass({
     propTypes: {
@@ -33,7 +34,7 @@ export default React.createClass({
                 <td>{item.claim ? item.claim.title : (<em>None</em>)}</td>
                 <td><Time at={item.started_at} save={this.saveStartedAt} /></td>
                 <td><Time at={item.ended_at} save={this.saveEndedAt} /></td>
-                <td className={styles.duration}>{item.started_ended_diff ? item.started_ended_diff.format('h[h] m[m] s[s]') : 'In progress'}</td>
+                <td className={styles.duration}><Duration duration={item.started_ended_diff} /></td>
                 <td className={styles.expand}><ItemClickable value={item.description} save={this.saveDescription} /></td>
             </tr>
         );

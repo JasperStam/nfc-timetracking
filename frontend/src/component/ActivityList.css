@@ -1,6 +1,7 @@
 .container {
     flex: 2;
     border-right: 1px solid var(--off-white);
+    overflow-y: scroll;
 }
 
 .table {

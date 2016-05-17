@@ -1,4 +1,8 @@
 :root {
     --black: #203633;
     --off-white: #ebf0f4;
+    --green: #acdac1;
+    --teal: #acd7cd;
+
+    --transition-timing: cubic-bezier(.2, 0, .2, 1);
 }

@@ -1,5 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Fira+Sans:300,300italic,400);
 
+html {
+    height: 100%;
+    display: flex;
+}
+
 body {
   font-family: 'Fira Sans', sans-serif;
   color: var(--black);
@@ -7,6 +12,7 @@ body {
   text-align: left;
   font-weight: 300;
   font-size: 1rem;
+  display: flex;
 }
 
 * {
@@ -24,4 +30,8 @@ h1 {
 
 em {
     opacity: .4;
+}
+
+:global #app {
+    display: flex;
 }
