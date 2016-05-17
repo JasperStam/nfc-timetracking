@@ -7,9 +7,14 @@ import styles from './TrackingItem.css';
 export default React.createClass({
     propTypes: {
         item: React.PropTypes.object.isRequired,
+        saveActivity: React.PropTypes.func.isRequired,
     },
-    saveStartedAt() {
-        console.log('no');
+    saveStartedAt(hour, minute) {
+        const startedAt = this.props.item.started_at
+            .clone()
+            .hour(hour)
+            .minute(minute);
+        this.props.saveActivity(this.props.item.id, { started_at: startedAt.format() });
     },
     render() {
         return (
