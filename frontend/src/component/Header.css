@@ -1,5 +1,13 @@
+.container {
+    height: 50px;
+    background: linear-gradient(to right, var(--pink), var(--blue));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .header {
     font-size: 2rem;
+    padding: 0;
     font-weight: 300;
-    background: linear-gradient(to bottom right, #bfe5eb, #f5ecf7);
 }

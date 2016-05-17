@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Fira+Sans:300,300italic,400);
 
-html {
+html, body {
     height: 100%;
-    display: flex;
+    overflow: hidden;
 }
 
 body {
@@ -12,7 +12,6 @@ body {
   text-align: left;
   font-weight: 300;
   font-size: 1rem;
-  display: flex;
 }
 
 * {
@@ -28,10 +27,16 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    font-size: 1rem;
+    padding: 1rem;
+    text-align: center;
+}
+
 em {
     opacity: .4;
 }
 
 :global #app {
-    display: flex;
+    height: 100%
 }

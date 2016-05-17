@@ -13,7 +13,7 @@ export default React.createClass({
     render() {
         return (
             <div className={styles.container}>
-                <h1>Today’s activities</h1>
+                <h2>Today’s activities</h2>
                 <table className={styles.table}>
                     <thead>
                         <tr>
