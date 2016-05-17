@@ -2,6 +2,7 @@ import React from 'react';
 import TrackingItem from './TrackingItem';
 import _ from 'lodash';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import styles from './TrackingList.css';
 
 export default React.createClass({
     propTypes: {
@@ -19,6 +20,7 @@ export default React.createClass({
                 transitionEnterTimeout={200}
                 transitionLeaveTimeout={200}
                 component="div"
+                className={styles.container}
             >
                 {currentActivities.map(this.renderItem)}
             </ReactCSSTransitionGroup>
