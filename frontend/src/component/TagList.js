@@ -14,12 +14,14 @@ export default React.createClass({
     render() {
         return (
             <div className={styles.container}>
-                <h2>Active tags</h2>
-                <table className={styles.table}>
-                    <tbody>
-                        {this.props.tags.map(this.renderItem)}
-                    </tbody>
-                </table>
+                <h2 className={styles.header} >Active tags</h2>
+                <div className={styles.content}>
+                    <table className={styles.table}>
+                        <tbody>
+                            {this.props.tags.map(this.renderItem)}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         );
     },
