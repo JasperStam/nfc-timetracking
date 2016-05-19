@@ -14,7 +14,7 @@ export default React.createClass({
     render() {
         return (
             <div className={styles.container}>
-                <h2 className={styles.header} >Active tags</h2>
+                <h2>Active tags</h2>
                 <div className={styles.content}>
                     <table className={styles.table}>
                         <tbody>

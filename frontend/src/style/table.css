@@ -15,10 +15,6 @@ tr {
     border-bottom: 1px solid var(--off-white);
 }
 
-tr:last-child {
-    border-bottom: 0;
-}
-
 td {
     padding: 1rem;
     white-space: nowrap;
