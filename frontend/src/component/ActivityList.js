@@ -1,5 +1,6 @@
 import React from 'react';
-import ActivityItem from './ActivityItem';
+import ActivityDay from './ActivityDay';
+import _ from 'lodash';
 import styles from './ActivityList.css';
 
 export default React.createClass({
@@ -7,27 +8,22 @@ export default React.createClass({
         activities: React.PropTypes.array.isRequired,
         saveActivity: React.PropTypes.func.isRequired,
     },
-    renderItem(activity) {
-        return (<ActivityItem item={activity} key={activity.id} saveActivity={this.props.saveActivity} />);
+    renderDay(activities) {
+        const date = activities[0].started_at;
+
+        return (<ActivityDay
+            activities={activities}
+            key={date.toDate()}
+            date={date}
+            saveActivity={this.props.saveActivity}
+        />);
     },
     render() {
+        const days = _.values(_.groupBy(this.props.activities, (activity) => activity.started_at.startOf('day')));
+
         return (
             <div className={styles.container}>
-                <h2>Today’s activities</h2>
-                <table className={styles.table}>
-                    <thead>
-                        <tr>
-                            <th>Project</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th className={styles.duration}>Duration</th>
-                            <th>Description</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.props.activities.map(this.renderItem)}
-                    </tbody>
-                </table>
+                {_.map(days, this.renderDay)}
             </div>
         );
     },

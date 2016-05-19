@@ -1,0 +1,16 @@
+.container {
+    margin-bottom: 50px;
+}
+
+.container:last-child {
+    margin-bottom: 0;
+}
+
+.table {
+    composes: table from 'style/table.css';
+}
+
+.duration {
+    text-align: right;
+    min-width: 130px;
+}

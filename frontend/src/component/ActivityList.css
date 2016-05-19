@@ -3,12 +3,3 @@
     border-right: 1px solid var(--off-white);
     overflow-y: scroll;
 }
-
-.table {
-    composes: table from 'style/table.css';
-}
-
-.duration {
-    text-align: right;
-    min-width: 130px;
-}
