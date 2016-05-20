@@ -19,7 +19,7 @@ export default React.createClass({
         />);
     },
     render() {
-        const days = _.values(_.groupBy(this.props.activities, (activity) => activity.started_at.get('date')));
+        const days = _.values(_.groupBy(this.props.activities, (activity) => -activity.started_at.get('date')));
 
         return (
             <div className={styles.container}>
