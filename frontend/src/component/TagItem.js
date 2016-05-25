@@ -37,6 +37,7 @@ export default React.createClass({
                         options={options}
                         value={this.state.claimTitle}
                         allowCreate
+                        addLabelText='"{label}" toevoegen?'
                         onChange={this.saveClaim}
                     />
                 </td>
