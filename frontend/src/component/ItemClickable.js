@@ -23,7 +23,7 @@ export default React.createClass({
         this.setState({ value: e.target.value });
     },
     render() {
-        const value = this.state.value || <em>None</em>;
+        const value = this.state.value || <em>Geen</em>;
         if (this.state.isInput) {
             return (
                 <textarea

@@ -39,7 +39,6 @@ export default React.createClass({
                         allowCreate
                         onChange={this.saveClaim}
                     />
-
                 </td>
             </tr>
         );

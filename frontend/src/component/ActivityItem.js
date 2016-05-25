@@ -31,7 +31,7 @@ export default React.createClass({
 
         return (
             <tr>
-                <td>{item.claim ? item.claim.title : (<em>None</em>)}</td>
+                <td>{item.claim ? item.claim.title : (<em>Geen</em>)}</td>
                 <td><Time at={item.started_at} save={this.saveStartedAt} /></td>
                 <td><Time at={item.ended_at} save={this.saveEndedAt} /></td>
                 <td className={styles.duration}><Duration duration={item.started_ended_diff} /></td>

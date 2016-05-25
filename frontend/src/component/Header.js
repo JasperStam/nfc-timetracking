@@ -7,11 +7,11 @@ export default React.createClass({
             <div className={styles.container}>
                 <div className={styles.navigation}>
                     <div className={styles.selected}>
-                        <a href="#" className={styles.button}>Activities</a>
+                        <a href="#" className={styles.button}>Activiteiten</a>
                     </div>
-                    <a href="#" className={styles.button}>Insights</a>
+                    <a href="#" className={styles.button}>Inzichten</a>
                 </div>
-                <a className={styles.button} href="#">Sign out</a>
+                <a className={styles.button} href="#">Uitloggen</a>
             </div>
         );
     },

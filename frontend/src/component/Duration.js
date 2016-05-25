@@ -7,7 +7,7 @@ export default React.createClass({
     render() {
         return (
             <div>
-                {this.props.duration ? this.props.duration.format('h[h] m[m] s[s]') : 'In progress'}
+                {this.props.duration ? this.props.duration.format('h[u] m[m] s[s]') : 'In progress'}
             </div>
         );
     },

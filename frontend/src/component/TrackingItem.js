@@ -28,7 +28,7 @@ export default React.createClass({
                     </div>
                 </div>
                 <div className={styles.duration}>
-                    Since
+                    Vanaf
                     <Time at={this.props.item.started_at} save={this.saveStartedAt} />
                     —&nbsp;
                     <Duration duration={this.props.item.started_ended_diff} />

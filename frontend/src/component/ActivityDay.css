@@ -14,3 +14,7 @@
     text-align: right;
     min-width: 130px;
 }
+
+.date::first-letter {
+    text-transform: capitalize;
+}

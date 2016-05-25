@@ -1,7 +1,6 @@
 import React from 'react';
 import ActivityItem from './ActivityItem';
 import styles from './ActivityDay.css';
-import moment from 'moment';
 
 export default React.createClass({
     propTypes: {
@@ -13,22 +12,15 @@ export default React.createClass({
         return (<ActivityItem item={activity} key={activity.id} saveActivity={this.props.saveActivity} />);
     },
     render() {
-        moment().calendar(null, {
-            sameDay: '[Today]',
-            lastDay: '[Yesterday]',
-            lastWeek: '[Last] dddd',
-            sameElse: 'DD/MM/YYYY',
-        });
-
         return (
             <div className={styles.container}>
-                <h2>
+                <h2 className={styles.date}>
                     {
-                        this.props.date.calendar(null, {
-                            sameDay: '[Today]',
-                            lastDay: '[Yesterday]',
-                            lastWeek: '[Last] dddd',
-                            sameElse: 'DD/MM/YYYY',
+                        this.props.date.locale('nl').calendar(null, {
+                            sameDay: '[Vandaag]',
+                            lastDay: '[Gisteren]',
+                            lastWeek: '[Afgelopen] dddd',
+                            sameElse: 'dddd DD MMM'
                         })
                     }
                 </h2>
@@ -36,10 +28,10 @@ export default React.createClass({
                     <thead>
                         <tr>
                             <th>Project</th>
-                            <th>From</th>
-                            <th>To</th>
-                            <th className={styles.duration}>Duration</th>
-                            <th>Description</th>
+                            <th>Vanaf</th>
+                            <th>Tot</th>
+                            <th className={styles.duration}>Duur</th>
+                            <th>Beschrijving</th>
                         </tr>
                     </thead>
                     <tbody>
