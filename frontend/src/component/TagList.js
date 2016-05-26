@@ -1,6 +1,7 @@
 import React from 'react';
 import TagItem from './TagItem';
 import styles from './TagList.css';
+import PureRenderMixin from 'react-addons-pure-render-mixin';
 
 export default React.createClass({
     propTypes: {
@@ -8,6 +9,7 @@ export default React.createClass({
         claims: React.PropTypes.array.isRequired,
         saveClaim: React.PropTypes.func.isRequired,
     },
+    mixins: [PureRenderMixin],
     renderItem(tag) {
         return (<TagItem item={tag} key={tag.id} claims={this.props.claims} saveClaim={this.props.saveClaim} />);
     },
