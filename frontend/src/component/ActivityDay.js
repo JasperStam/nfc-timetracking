@@ -20,7 +20,7 @@ export default React.createClass({
                             sameDay: '[Vandaag]',
                             lastDay: '[Gisteren]',
                             lastWeek: '[Afgelopen] dddd',
-                            sameElse: 'dddd DD MMM'
+                            sameElse: 'dddd DD MMM',
                         })
                     }
                 </h2>
