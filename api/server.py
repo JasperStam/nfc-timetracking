@@ -41,6 +41,18 @@ def tag_getcollection():
     tags = Tag.get_collection(db.session)
     return jsonify({'data': tags})
 
+@app.route('/api/tag/<int:tag_id>', methods=['PATCH'])
+def tag_patch(tag_id):
+    body = request.json
+
+    tag = db.session.query(Tag).get(tag_id)
+
+    if body.get('description'):
+        tag.description = body['description']
+
+    db.session.commit()
+    return json.dumps(Tag.transform(tag))
+
 
 @app.route('/api/claim', methods=['POST'])
 def claim_post():
