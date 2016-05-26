@@ -16,6 +16,13 @@ export default React.createClass({
             .minute(minute);
         this.props.saveActivity(this.props.item.id, { started_at: startedAt.format() });
     },
+    renderTitle() {
+        if (!this.props.item.claim) {
+            return (<em>Tag zonder project</em>);
+        }
+
+        return this.props.item.claim.title;
+    },
     render() {
         return (
             <div className={styles.container}>
@@ -24,7 +31,7 @@ export default React.createClass({
                         <Loading />
                     </div>
                     <div className={styles.item}>
-                        {this.props.item.claim.title}
+                        {this.renderTitle()}
                     </div>
                 </div>
                 <div className={styles.duration}>
