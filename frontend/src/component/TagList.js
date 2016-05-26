@@ -8,10 +8,17 @@ export default React.createClass({
         tags: React.PropTypes.array.isRequired,
         claims: React.PropTypes.array.isRequired,
         saveClaim: React.PropTypes.func.isRequired,
+        saveTag: React.PropTypes.func.isRequired,
     },
     mixins: [PureRenderMixin],
     renderItem(tag) {
-        return (<TagItem item={tag} key={tag.id} claims={this.props.claims} saveClaim={this.props.saveClaim} />);
+        return (<TagItem
+            item={tag}
+            key={tag.id}
+            claims={this.props.claims}
+            saveClaim={this.props.saveClaim}
+            saveTag={this.props.saveTag}
+        />);
     },
     render() {
         return (

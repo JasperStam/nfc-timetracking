@@ -1,6 +1,15 @@
 .container {
-    background: #000;
     width: 20px;
     height: 20px;
+    border: 0;
+}
+
+.container::-webkit-color-swatch-wrapper {
+    padding: 0;
+    background: #fff;
+}
+
+.container::-webkit-color-swatch {
+    border: 0;
     border-radius: 50%;
 }

@@ -8,6 +8,7 @@ export default React.createClass({
         item: React.PropTypes.object.isRequired,
         claims: React.PropTypes.array.isRequired,
         saveClaim: React.PropTypes.func.isRequired,
+        saveTag: React.PropTypes.func.isRequired,
     },
     getInitialState() {
         return {
@@ -18,6 +19,9 @@ export default React.createClass({
         const claimTitle = option || null;
         this.setState({ claimTitle });
         this.props.saveClaim(this.props.item.id, claimTitle);
+    },
+    saveTag(color) {
+        this.props.saveTag(this.props.item.id, color);
     },
     formatClaim(claim) {
         return {
@@ -31,7 +35,7 @@ export default React.createClass({
 
         return (
             <tr>
-                <td><ColorBox color={item.description} /></td>
+                <td><ColorBox color={item.description} save={this.saveTag} /></td>
                 <td className={styles.expand}>
                     <Select
                         options={options}

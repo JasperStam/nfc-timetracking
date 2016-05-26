@@ -31,9 +31,20 @@ export default React.createClass({
             title,
         });
     },
+    saveTag(id, description) {
+        axios.patch(`${MODUS_CONFIG.apiUrl}/tag/${id}`, {
+            id,
+            description,
+        });
+    },
     render() {
         return (
-            <TagList tags={this.state.tags} claims={this.state.claims} saveClaim={this.saveClaim} />
+            <TagList
+                tags={this.state.tags}
+                claims={this.state.claims}
+                saveClaim={this.saveClaim}
+                saveTag={this.saveTag}
+            />
         );
     },
 });
